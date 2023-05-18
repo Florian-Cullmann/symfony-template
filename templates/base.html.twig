@@ -14,6 +14,22 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div class="page">
+            {% if is_granted('ROLE_USER') %}
+                {{ include('_includes/sidebar.html.twig') }}
+            {% endif %}
+
+            <div class="page-wrapper">
+                <div class="page-header d-print-none">
+                    <div class="container-xl">
+                        {% block body %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            {{ include('_includes/footer.html.twig') }}
+        </footer>
     </body>
 </html>
